@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", sans-serif;
+  
+  --color-primary: #1E1B4B;
+  --color-secondary: #6366F1;
+  --color-accent: #10B981;
+  --color-muted: #94A3B8;
+  --color-surface: #F8FAFC;
+  
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-shine: shine 3s linear infinite;
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-[#1E293B] bg-white selection:bg-secondary/20 selection:text-secondary antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-6 lg:px-8;
+  }
+  
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg;
+  }
+
+  .premium-shadow {
+    @apply shadow-[0_32px_64px_-16px_rgba(15,23,42,0.08)];
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-secondary to-blue-600 text-white hover:shadow-xl hover:shadow-secondary/20 active:scale-[0.98] transition-all duration-300;
+  }
+}
+
+/* Custom Easing */
+.ease-premium {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
